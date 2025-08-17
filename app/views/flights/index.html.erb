@@ -1,12 +1,9 @@
 <div class="container">
     <div class="search-form">
-        <%= simple_form_for @flight, method: :get do |f|%>
-            <%= f.input :departure_airport_id, collection: @departures, required: true %>
-            <%= f.input :arrival_airport_id, collection: @arrivals, required: true %>
-            <div class="passenger-count">
-                <%= label :passenger_count, "Passenger Count" %>
-                <%= select(:passenger, :passenger_count, (1..4)) %>
-            </div>
+        <%= simple_form_for :search, url: flights_path, method: :get do |f|%>
+            <%= f.input :departure_airport_id, collection: @departures %>
+            <%= f.input :arrival_airport_id, collection: @arrivals %>
+            <%= f.input :passenger_count, collection: (1..4) %>
             <%= f.input :date , collection: @dates %>
             <div class="search-button">
                 <%= f.button :submit, "Find Flights" %>
