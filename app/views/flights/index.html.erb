@@ -15,26 +15,14 @@
     <div class="search-results">
         <% unless params[:search].nil? %>
             <h2>Flight Results</h2>
-            <% @flights.each do |flight| %>
-                <div class="flight-details">
-                    <div class="flight-date">
-                        Departure Airport: 
-                        <%= flight.departure_airport.code %>
-                    </div>
-                    <div class="flight-date">
-                        Arrival Airport:
-                        <%= flight.arrival_airport.code %>
-                    </div>
-                    <div class="flight-date">
-                        Date:
-                        <%= flight.date.strftime("%m-%d-%Y")%>
-                    </div>
-                    <div class="flight-date">
-                        Time:
-                        <%= flight.date.strftime("%H:%M")%>
-                    </div>
+            <%= simple_form_for :booking, method: :get do |f| %>
+                <div class="flight-option">
+                    <%= f.input :flight, collection: @flights, as: :radio_buttons, label: false %>
                 </div>
-                <br/>
+                <%= f.hidden_field :passenger_count, value: @passenger_count%>
+                <div class="book-button">
+                    <%= f.button :submit, "Book"%>
+                </div>
             <% end %>
         <% end %>
     </div>
