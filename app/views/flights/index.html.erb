@@ -15,9 +15,9 @@
     <div class="search-results">
         <% unless params[:search].nil? %>
             <h2>Flight Results</h2>
-            <%= simple_form_for :booking, method: :get do |f| %>
+            <%= simple_form_for :booking, url: new_booking_path, method: :get do |f| %>
                 <div class="flight-option">
-                    <%= f.input :flight, collection: @flights, as: :radio_buttons, label: false %>
+                    <%= f.input :flight_id, collection: @flights, as: :radio_buttons, label: false %>
                 </div>
                 <%= f.hidden_field :passenger_count, value: @passenger_count%>
                 <div class="book-button">
