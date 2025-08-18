@@ -1,5 +1,6 @@
 <div class="container">
     <div class="search-form">
+        <h2>Search Flights</h2>
         <%= simple_form_for :search, url: flights_path, method: :get do |f|%>
             <%= f.input :departure_airport_id, collection: @departures %>
             <%= f.input :arrival_airport_id, collection: @arrivals %>
@@ -8,6 +9,33 @@
             <div class="search-button">
                 <%= f.button :submit, "Find Flights" %>
             </div>
+        <% end %>
+    </div>
+
+    <div class="search-results">
+        <% unless params[:search].nil? %>
+            <h2>Flight Results</h2>
+            <% @flights.each do |flight| %>
+                <div class="flight-details">
+                    <div class="flight-date">
+                        Departure Airport: 
+                        <%= flight.departure_airport.code %>
+                    </div>
+                    <div class="flight-date">
+                        Arrival Airport:
+                        <%= flight.arrival_airport.code %>
+                    </div>
+                    <div class="flight-date">
+                        Date:
+                        <%= flight.date.strftime("%m-%d-%Y")%>
+                    </div>
+                    <div class="flight-date">
+                        Time:
+                        <%= flight.date.strftime("%H:%M")%>
+                    </div>
+                </div>
+                <br/>
+            <% end %>
         <% end %>
     </div>
 </div>
