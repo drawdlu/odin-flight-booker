@@ -8,6 +8,10 @@
         <span>Time:</span> <%= @flight.date.strftime("%H:%M") %>
     </div>
     <div class="info">
+        <span>Duration:</span> <%= @flight.duration / 60 %> hours
+                                <%= @flight.duration % 60 %> minutes
+    </div>
+    <div class="info">
         <span>Departure Airport:</span> <%= @flight.departure_airport.code %>
     </div>
     <div class="info">
