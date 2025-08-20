@@ -1,5 +1,7 @@
 class Passenger < ApplicationRecord
-  has_many :bookings
+  belongs_to :booking
 
-  validates :email, uniqueness: true
+  validates :name, presence: true
+  validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP,
+                                              message: "must use a valid email address" }
 end
