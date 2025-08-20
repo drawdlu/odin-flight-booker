@@ -5,8 +5,7 @@ class FlightsController < ApplicationController
     @dates = Flight.all.map { |f| [ f.date.strftime("%m-%d-%Y"), f.date.strftime("%Y-%m-%d") ] }.sort.uniq
 
     unless params["search"].nil?
-      @flights = Flight.where("departure_airport_id = ? AND arrival_airport_id = ? AND DATE(date) = ?",
-                search_params["departure_airport_id"], search_params["arrival_airport_id"], search_params["date"])
+      search_flights
       @flights = @flights.map { |f| [ to_string(f), f.id ] }
       @passenger_count = search_params["passenger_count"]
     end
@@ -23,5 +22,21 @@ class FlightsController < ApplicationController
 
   def search_params
     params.require(:search).permit(:departure_airport_id, :arrival_airport_id, :passenger_count, :date)
+  end
+
+  def search_flights
+    @flights = Flight.all
+
+    if search_params["departure_airport_id"].present?
+      @flights = @flights.where("departure_airport_id = ?", search_params["departure_airport_id"])
+    end
+
+    if search_params["arrival_airport_id"].present?
+      @flights = @flights.where("arrival_airport_id = ?", search_params["arrival_airport_id"])
+    end
+
+    if search_params["date"].present?
+      @flights = @flights.where("DATE(date) = ?", search_params["date"])
+    end
   end
 end
