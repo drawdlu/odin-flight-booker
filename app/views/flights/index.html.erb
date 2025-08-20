@@ -2,10 +2,10 @@
     <div class="search-form">
         <h2>Search Flights</h2>
         <%= simple_form_for :search, url: flights_path, method: :get do |f|%>
-            <%= f.input :departure_airport_id, collection: @departures %>
-            <%= f.input :arrival_airport_id, collection: @arrivals %>
+            <%= f.input :departure_airport_id, collection: @departures, required: false %>
+            <%= f.input :arrival_airport_id, collection: @arrivals, required: false %>
             <%= f.input :passenger_count, collection: (1..4) %>
-            <%= f.input :date , collection: @dates %>
+            <%= f.input :date , collection: @dates, required: false %>
             <div class="search-button">
                 <%= f.button :submit, "Find Flights" %>
             </div>
