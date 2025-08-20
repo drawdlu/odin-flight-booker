@@ -9,11 +9,18 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
 
     if @booking.save
+      flash[:notice] = "You have successfully booked a flight"
       redirect_to @booking
     else
       @flight = Flight.find(booking_params["flight_id"])
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def show
+    @booking = Booking.find(params[:id])
+    @flight = Flight.find(@booking.flight.id)
+    @passengers = @booking.passengers
   end
 
   private
