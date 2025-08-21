@@ -1,0 +1,17 @@
+.header {
+    display: flex;
+    justify-content: center;
+}
+
+.header-link {
+    font-size: 2rem;
+    text-align: center;
+    background-color: rgb(254, 62, 0, .8);
+    color: #febd00;
+    letter-spacing: .3ch;
+    font-weight: bold;
+    padding: .5rem;
+    border-radius: 30px;
+    margin-top: 1rem;
+    width: 85vw;
+}
