@@ -17,7 +17,7 @@ class FlightsController < ApplicationController
     "Departure Airport: #{flight.departure_airport.code}
     Arrival Airport: #{flight.arrival_airport.code}
     Date: #{flight.date.strftime("%m-%d-%Y")}
-    Time: #{flight.date.strftime("%H-%M")}"
+    Time: #{flight.date.strftime("%H:%M")}"
   end
 
   def search_params

@@ -1,0 +1,96 @@
+.index-container {
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: center;
+}
+
+.flight-search {
+    background-color: rgb(255, 255, 255, .9);
+    border-radius: 10px;
+    border: 1px solid black;
+    width: 80%;
+    padding: 2rem;
+}
+
+.flight-search h2 {
+    padding-bottom: 1rem;
+}
+
+.search-form form {
+    display: flex;
+    justify-content: flex-start;
+    gap: 3rem;
+    flex-wrap: wrap;
+    padding: 0 2rem;
+}
+
+.search-form select {
+    border-radius: 5px;
+}
+
+.search-button {
+    margin-left: auto;
+    padding-right: 2rem;
+}
+
+.search-form label {
+    padding-right: .5rem;
+}
+
+.search-results {
+    width: 85%;
+}
+
+.search-results h2, 
+.search-results p {
+    text-align: center;
+}
+
+.search-results p {
+    margin-top: 1rem;
+}
+
+.search-results .flight-option .input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.search-results .flight-option .input span {
+    padding: 1rem;
+    margin: 1rem;
+    background-color: rgb(254, 62, 0, .9);
+    border-radius: 5px;
+}
+
+.search-results input {
+    margin-right: 1rem;
+}
+
+.book-button {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+.book-button input {
+    padding: 1rem 2rem;
+    border-radius: 15px;
+    border: none;
+    background-color: rgb(0, 192, 254);
+    font-size: 1.2rem;
+    color: white;
+    font-weight: bold; 
+    transition: background-color 0.3s ease-in-out;
+}
+
+.book-button input:hover {
+    background-color: rgb(0, 173, 229);
+}
+
+

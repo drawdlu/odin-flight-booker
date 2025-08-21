@@ -1,33 +1,39 @@
-<div class="container">
-    <div class="search-form">
-        <h2>Search Flights</h2>
-        <%= simple_form_for :search, url: flights_path, method: :get do |f|%>
-            <%= f.input :departure_airport_id, collection: @departures, required: false %>
-            <%= f.input :arrival_airport_id, collection: @arrivals, required: false %>
-            <%= f.input :passenger_count, collection: (1..4) %>
-            <%= f.input :date , collection: @dates, required: false %>
-            <div class="search-button">
-                <%= f.button :submit, "Find Flights" %>
-            </div>
-        <% end %>
-    </div>
-
-    <div class="search-results">
-        <% unless params[:search].nil? %>
-            <h2>Flight Results</h2>
-            <% unless @flights.empty? %>
-                <%= simple_form_for :booking, url: new_booking_path, method: :get do |f| %>
-                    <div class="flight-option">
-                        <%= f.input :flight_id, collection: @flights, as: :radio_buttons, label: false %>
-                    </div>
-                    <%= f.hidden_field :passenger_count, value: @passenger_count%>
-                    <div class="book-button">
-                        <%= f.button :submit, "Book"%>
+<div class="index-container">
+    <div class="flex-container">
+        <div class="flight-search">
+            <h2>Search Flights</h2>
+            <div class="search-form">
+                <%= simple_form_for :search, url: flights_path, method: :get do |f|%>
+                    <%= f.input :departure_airport_id, collection: @departures, required: false %>
+                    <%= f.input :arrival_airport_id, collection: @arrivals, required: false %>
+                    <%= f.input :passenger_count, collection: (1..4) %>
+                    <%= f.input :date , collection: @dates, required: false %>
+                    <div class="search-button">
+                        <%= f.button :submit, "Find Flights" %>
                     </div>
                 <% end %>
-            <% else %>
-                <p>No Flights Available</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="flex-container">
+        <div class="search-results">
+            <% unless params[:search].nil? %>
+                <h2>Flight Results</h2>
+                <% unless @flights.empty? %>
+                    <%= simple_form_for :booking, url: new_booking_path, method: :get do |f| %>
+                        <div class="flight-option">
+                            <%= f.input :flight_id, collection: @flights, as: :radio_buttons, label: false %>
+                        </div>
+                        <%= f.hidden_field :passenger_count, value: @passenger_count%>
+                        <div class="book-button">
+                            <%= f.button :submit, "Book"%>
+                        </div>
+                    <% end %>
+                <% else %>
+                    <p>No Flights Available</p>
+                <% end %>
             <% end %>
-        <% end %>
+        </div>
     </div>
 </div>

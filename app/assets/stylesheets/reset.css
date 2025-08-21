@@ -82,3 +82,8 @@ a {
     text-decoration: none;
     color: inherit;
 }
+
+/* remove text decoration on required simple forms */
+.simple_form abbr {
+    text-decoration: none;
+}
