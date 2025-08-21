@@ -8,3 +8,8 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+
+ .alerts {
+    margin-top: 1rem;
+    text-align: center;
+ }

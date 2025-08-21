@@ -1,23 +1,25 @@
-<h2>Booking Information</h2>
-
-<div class="booking-info">
-    <div class="info">
-        <span>Date:</span> <%= flight.date.strftime("%B %d, %Y")%>
-    </div>
-    <div class="info">
-        <span>Time:</span> <%= flight.date.strftime("%H:%M") %>
-    </div>
-    <div class="info">
-        <span>Duration:</span> <%= flight.duration / 60 %> hours
-                                <%= flight.duration % 60 %> minutes
-    </div>
-    <div class="info">
-        <span>Departure Airport:</span> <%= flight.departure_airport.code %>
-    </div>
-    <div class="info">
-        <span>Arrival Airport:</span> <%= flight.arrival_airport.code %>
-    </div>
-    <div class="info">
-        <span>Flight ID:</span> <%= flight.id %>
+<div class="booking-info-container">
+    <h2>Booking Information</h2>
+    
+    <div class="booking-info">
+        <div class="info">
+            <span>Date:</span> <%= flight.date.strftime("%B %d, %Y")%>
+        </div>
+        <div class="info">
+            <span>Time:</span> <%= flight.date.strftime("%H:%M") %>
+        </div>
+        <div class="info">
+            <span>Duration:</span> <%= flight.duration / 60 %> hours
+                                    <%= flight.duration % 60 %> minutes
+        </div>
+        <div class="info">
+            <span>Departure Airport:</span> <%= flight.departure_airport.code %>
+        </div>
+        <div class="info">
+            <span>Arrival Airport:</span> <%= flight.arrival_airport.code %>
+        </div>
+        <div class="info">
+            <span>Flight ID:</span> <%= flight.id %>
+        </div>
     </div>
 </div>

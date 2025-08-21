@@ -1,28 +1,29 @@
-<%= render "booking_information", flight: @flight %>
-
-<div class="booking-form">
-    <%= simple_form_for @booking do |f| %>
-        <div class="passenger-form">
+<div class="booking-container">
+    <%= render "booking_information", flight: @flight %>
+    <div class="booking-form">
+        <%= simple_form_for @booking do |f| %>
             <h3>Passengers</h3>
-            <%= f.simple_fields_for :passengers do |p_form| %>
-                <div class="passenger-details">
-                    <% @booking.errors.full_messages_for(:passengers).each do |message| %>
-                        <div class="message">
-                            <%= message%>
-                        </div>
-                    <% end %>
-                    <%= p_form.input :name, required: true %>
-                    <% @booking.errors.full_messages_for(:email).each do |message| %>
-                        <div class="message">
-                            <%= message%>
-                        </div>
-                    <% end %>
-                    <%= p_form.input :email, required: true %>
-                </div>
-                <br/>
-            <% end %>
-            <%= f.hidden_field :flight_id, value: @flight.id%>
-        </div>
-        <%= f.button :submit, "Confirm" %>
-    <% end %>
+            <div class="passenger-form">
+                <%= f.simple_fields_for :passengers do |p_form| %>
+                    <div class="passenger-details">
+                        <% @booking.errors.full_messages_for(:passengers).each do |message| %>
+                            <div class="message">
+                                <%= message%>
+                            </div>
+                        <% end %>
+                        <%= p_form.input :name, required: true %>
+                        <% @booking.errors.full_messages_for(:email).each do |message| %>
+                            <div class="message">
+                                <%= message%>
+                            </div>
+                        <% end %>
+                        <%= p_form.input :email, required: true %>
+                    </div>
+                    <br/>
+                <% end %>
+                <%= f.hidden_field :flight_id, value: @flight.id%>
+            </div>
+            <%= f.button :submit, "Confirm" %>
+        <% end %>
+    </div>
 </div>

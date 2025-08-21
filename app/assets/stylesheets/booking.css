@@ -1,0 +1,53 @@
+.booking-container {
+    margin-left: 8rem;
+}
+
+.booking-info-container, 
+.passenger-info-container {
+    display: flex; 
+    flex-direction: column;
+    width: 30%;
+    padding: 2rem;
+    background-color: antiquewhite;
+    margin-bottom: 3rem;
+    border-radius: 10px;
+}
+
+.booking-info-container h2 {
+    margin-bottom: 1rem;
+}
+
+.booking-info-container span {
+    font-weight: bold; 
+}
+
+.booking-form {
+    background-color: antiquewhite;
+    max-width: 40%;
+    padding: 2rem;
+    border-radius: 10px;
+}
+
+.booking-form h3 {
+    margin-bottom: 1.5rem;
+}
+
+.passenger-details .input{
+    display: flex;
+    justify-content: space-between;
+    max-width: 30ch;
+    gap: 1rem;
+}
+
+.passenger-details {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.passenger-form input {
+    width: 20ch;
+}
+
+
+
