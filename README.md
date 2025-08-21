@@ -29,7 +29,7 @@ A one-way flight booker application that allows users to book on a specific date
     - `$ gem install bundler`
 - Install PostgreSQL
 - Navigate to your cloned repository
-    - `$ cd private-events`
+    - `$ cd odin-flight-booker`
 - Install all dependencies
     - `$ bundle install`
 - Migrate database
