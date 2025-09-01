@@ -1,9 +1,9 @@
 <div class="booking-container">
     <%= render "booking_information", flight: @flight %>
-    <div class="booking-form">
+    <div class="booking-form" data-controller="passenger">
         <%= simple_form_for @booking do |f| %>
             <h3>Passengers</h3>
-            <div class="passenger-form">
+            <div class="passenger-form" data-passenger-target="formContainer">
                 <%= f.simple_fields_for :passengers do |p_form| %>
                     <div class="passenger-details">
                         <% @booking.errors.full_messages_for(:passengers).each do |message| %>
@@ -25,5 +25,7 @@
             </div>
             <%= f.button :submit, "Confirm" %>
         <% end %>
+        <br>
+        <button data-action="passenger#add">Add Passenger</button>
     </div>
 </div>
