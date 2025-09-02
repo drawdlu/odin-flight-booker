@@ -29,7 +29,11 @@ export default class extends Controller {
     static values = { count: String }
 
     connect() {
-        
+        this.element.addEventListener('keypress', (e) => {
+            if (e.key == 'Enter') {
+                event.preventDefault()
+            }
+        })
     }
 
     add() {
