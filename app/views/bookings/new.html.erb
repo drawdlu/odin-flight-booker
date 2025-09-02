@@ -5,7 +5,7 @@
             <h3>Passengers</h3>
             <div class="passenger-form" data-passenger-target="formContainer">
                 <%= f.simple_fields_for :passengers do |p_form| %>
-                    <div class="passenger-details">
+                    <div class="passenger-details" data-passenger-target="details">
                         <% @booking.errors.full_messages_for(:passengers).each do |message| %>
                             <div class="message">
                                 <%= message%>
@@ -18,12 +18,13 @@
                             </div>
                         <% end %>
                         <%= p_form.input :email, required: true %>
+                        <button data-action="passenger#remove:prevent">Remove</button>
                     </div>
                     <br/>
                 <% end %>
                 <%= f.hidden_field :flight_id, value: @flight.id%>
                 <template data-passenger-target="formTemplate">
-                    <div class="passenger-details">
+                    <div class="passenger-details"  data-passenger-target="details">
                         <div class="input string required booking_passengers_name">
                             <label class="string required">
                             <abbr title="required">*</abbr> Name</label>
@@ -34,6 +35,7 @@
                             <abbr title="required">*</abbr> Email</label>
                             <input class="string email required" required="required" aria-required="true" type="email">
                         </div>
+                        <button data-action="passenger#remove:prevent">Remove</button>
                     </div>
                     <br>
                 </template>

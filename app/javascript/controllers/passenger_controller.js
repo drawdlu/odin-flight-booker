@@ -3,7 +3,7 @@ import { Controller } from "@hotwired/stimulus"
 function addAttributesToForm(template, index) {
     let values = createFormAttributeValues(index)
     setThreeAttributes(template.firstElementChild.firstElementChild, values, "name")
-    setThreeAttributes(template.firstElementChild.lastElementChild, values, "email")
+    setThreeAttributes(template.firstElementChild.getElementsByTagName('div')[1], values, "email")
 
     return template
 }
@@ -29,7 +29,7 @@ function createFormAttributeValues(index) {
 }
 
 export default class extends Controller {
-    static targets = [ "formContainer", "formTemplate" ]
+    static targets = [ "formContainer", "formTemplate", "details" ]
     static values = { count: String }
 
     add() {
@@ -38,5 +38,12 @@ export default class extends Controller {
         let clone = element.content.cloneNode(true)
         clone = addAttributesToForm(clone, this.countValue)
         this.formContainerTarget.appendChild(clone)
+        this.countValue++
+    }
+
+    remove() {
+        if (this.formContainerTarget.getElementsByTagName('div').length > 3) {
+            this.formContainerTarget.removeChild(event.target.parentNode)
+        }
     }
 }
