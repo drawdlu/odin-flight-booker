@@ -1,23 +1,42 @@
 import { Controller } from "@hotwired/stimulus"
 
-function elementFromHTML(html) {
-    const template = document.createElement("template");
-    template.innerHTML = html.trim();
+function addAttributesToForm(template, index) {
+    let values = createFormAttributeValues(index)
+    setThreeAttributes(template.firstElementChild.firstElementChild, values, "name")
+    setThreeAttributes(template.firstElementChild.lastElementChild, values, "email")
 
     return template
 }
 
+function setThreeAttributes(template, values, value) {
+    template.firstElementChild.setAttribute("for", values[`${value}_id_for`])
+    template.lastElementChild.setAttribute("id", values[`${value}_id_for`])
+    template.lastElementChild.setAttribute("name", values[`${value}_input`])
+
+    return template
+}
+
+function createFormAttributeValues(index) {
+    let name_input = `booking[passengers_attributes][${index}][name]`
+    let name_id_for = `booking_passengers_attributes_${index}_name`
+    let email_input = `booking[passengers_attributes][${index}][email]`
+    let email_id_for = `booking_passengers_attributes_${index}_email`
+
+    return {
+        name_input: name_input, name_id_for: name_id_for,
+        email_input: email_input, email_id_for: email_id_for
+    }
+}
+
 export default class extends Controller {
-    static targets = [ "formContainer" ]
+    static targets = [ "formContainer", "formTemplate" ]
+    static values = { count: String }
 
     add() {
-        const element = elementFromHTML(`
-            <div class="passenger-details">
-            </div>
-        `)
+        const element = this.formTemplateTarget
 
-        const clone = element.content.cloneNode(true)
-
+        let clone = element.content.cloneNode(true)
+        clone = addAttributesToForm(clone, this.countValue)
         this.formContainerTarget.appendChild(clone)
     }
 }

@@ -1,6 +1,6 @@
 <div class="booking-container">
     <%= render "booking_information", flight: @flight %>
-    <div class="booking-form" data-controller="passenger">
+    <div class="booking-form" data-controller="passenger"  data-passenger-count-value=<%= @passenger_count %>>
         <%= simple_form_for @booking do |f| %>
             <h3>Passengers</h3>
             <div class="passenger-form" data-passenger-target="formContainer">
@@ -22,6 +22,21 @@
                     <br/>
                 <% end %>
                 <%= f.hidden_field :flight_id, value: @flight.id%>
+                <template data-passenger-target="formTemplate">
+                    <div class="passenger-details">
+                        <div class="input string required booking_passengers_name">
+                            <label class="string required">
+                            <abbr title="required">*</abbr> Name</label>
+                            <input class="string required" required="required" aria-required="true" type="text">
+                        </div>
+                        <div class="input email required booking_passengers_email">
+                            <label class="email required">
+                            <abbr title="required">*</abbr> Email</label>
+                            <input class="string email required" required="required" aria-required="true" type="email">
+                        </div>
+                    </div>
+                    <br>
+                </template>
             </div>
             <%= f.button :submit, "Confirm" %>
         <% end %>
