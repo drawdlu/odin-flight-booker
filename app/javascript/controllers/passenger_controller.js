@@ -4,16 +4,12 @@ function addAttributesToForm(template, index) {
     let values = createFormAttributeValues(index)
     setThreeAttributes(template.firstElementChild.firstElementChild, values, "name")
     setThreeAttributes(template.firstElementChild.getElementsByTagName('div')[1], values, "email")
-
-    return template
 }
 
 function setThreeAttributes(template, values, value) {
     template.firstElementChild.setAttribute("for", values[`${value}_id_for`])
     template.lastElementChild.setAttribute("id", values[`${value}_id_for`])
     template.lastElementChild.setAttribute("name", values[`${value}_input`])
-
-    return template
 }
 
 function createFormAttributeValues(index) {
@@ -32,11 +28,15 @@ export default class extends Controller {
     static targets = [ "formContainer", "formTemplate", "details" ]
     static values = { count: String }
 
+    connect() {
+        
+    }
+
     add() {
         const element = this.formTemplateTarget
 
         let clone = element.content.cloneNode(true)
-        clone = addAttributesToForm(clone, this.countValue)
+        addAttributesToForm(clone, this.countValue)
         this.formContainerTarget.appendChild(clone)
         this.countValue++
     }
