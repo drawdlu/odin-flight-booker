@@ -1,0 +1,19 @@
+<h1>You have successfully booked a flight!</h1>
+<br>
+<h2>Flight Information</h2>
+<ul>
+    <li>Date: <%= @flight.date.strftime("%B %d, %Y")%></li>
+    <li>Time: <%= @flight.date.strftime("%H:%M") %></li>
+    <li>Duration: <%= @flight.duration / 60 %> hours
+                <%= @flight.duration % 60 %> minutes</li>
+    <li>Departure Airport: <%= @flight.departure_airport.code %></li>
+    <li>Arrival Airport: <%= @flight.arrival_airport.code %></li>
+    <li>Flight ID: <%= @flight.id %></li>
+</ul>
+
+<h2>Passenger Information</h2>
+<ul>
+    <li>Name: <%= @passenger.name %></li>
+    <li>Email: <%= @passenger.email %></li>
+</ul>
+

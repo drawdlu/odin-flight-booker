@@ -1,0 +1,15 @@
+You have successfully booked a flight!
+
+========================================
+
+Flight Information
+- Date: <%= @flight.date.strftime("%B %d, %Y")%>
+- Time: <%= @flight.date.strftime("%H:%M") %>
+- Duration: <%= @flight.duration / 60 %> hours <%= @flight.duration % 60 %> minutes
+- Departure Airport: <%= @flight.departure_airport.code %>
+- Arrival Airport: <%= @flight.arrival_airport.code %>
+- Flight ID: <%= @flight.id %>
+
+Passenger Information
+- Name: <%= @passenger.name %>
+- Email: <%= @passenger.email %>
