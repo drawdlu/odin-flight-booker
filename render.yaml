@@ -3,9 +3,9 @@ services:
     name: odin-flight-booker
     runtime: ruby
     plan: free
-    buildCommand: './bin/render-build.sh'
+    buildCommand: 'bundle install && bundle exec rake assets:precompile && ./bin/render-build.sh'
     # preDeployCommand: "bundle exec rails db:migrate" # preDeployCommand only available on paid instance types
-    startCommand: './bin/rails server'
+    startCommand: 'bundle exec rails server -b 0.0.0.0 -p 3000'
     envVars:
       - key: DATABASE_URL
         fromDatabase:
