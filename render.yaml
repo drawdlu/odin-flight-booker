@@ -3,7 +3,7 @@ services:
     name: odin-flight-booker
     runtime: ruby
     plan: free
-    buildCommand: './bin/render-build.sh'
+    buildCommand: './bin/render-build.sh && ./bin/rails db:seed'
     # preDeployCommand: "bundle exec rails db:migrate" # preDeployCommand only available on paid instance types
     startCommand: './bin/rails server'
     envVars:

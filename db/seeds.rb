@@ -19,7 +19,7 @@ def seed_airports
 end
 
 def seed_flights
-  10.times do
+  20.times do
     Flight.find_or_create_by!(random_flight_data)
   end
 end
